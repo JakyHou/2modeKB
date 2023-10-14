@@ -3,7 +3,7 @@
  * Author             : WCH
  * Version            : V1.0
  * Date               : 2018/12/10
- * Description        : À¶ÑÀ¼üÅÌÓ¦ÓÃ³ÌÐò£¬³õÊ¼»¯¹ã²¥Á¬½Ó²ÎÊý£¬È»ºó¹ã²¥£¬Ö±ÖÁÁ¬½ÓÖ÷»úºó£¬¶¨Ê±ÉÏ´«¼üÖµ
+ * Description        : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ò£¬³ï¿½Ê¼ï¿½ï¿½ï¿½ã²¥ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ã²¥ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬¶ï¿½Ê±ï¿½Ï´ï¿½ï¿½ï¿½Öµ
  *******************************************************************************/
 
 /*********************************************************************
@@ -104,7 +104,7 @@ uint8_t devAddrType;
 // GAP Profile - Name attribute for SCAN RSP data
 static uint8 scanRspData[] = { 0x0E,                      // length of this data
         GAP_ADTYPE_LOCAL_NAME_COMPLETE,   // AD Type = Complete local name
-        '3', 'm', 'o', 'd', 'e', 'k', 'e', 'y', 'b', 'o', 'a', 'r', 'd', // connection interval range
+        '2', 'm', 'o', 'd', 'e', 'k', 'e', 'y', 'b', 'o', 'a', 'r', 'd', // connection interval range
         0x05,   // length of this data
         GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE, LO_UINT16(
                 DEFAULT_DESIRED_MIN_CONN_INTERVAL),   // 100ms
@@ -136,7 +136,7 @@ static uint8 advertData[] = {
                 GAP_APPEARE_HID_KEYBOARD) };
 
 // Device name attribute value
-static CONST uint8 attDeviceName[GAP_DEVICE_NAME_LEN] = "Caiger's Keyborad";
+static CONST uint8 attDeviceName[GAP_DEVICE_NAME_LEN] = "HHQ's Keyborad";
 
 // HID Dev configuration
 static hidDevCfg_t hidEmuCfg = {
@@ -524,7 +524,7 @@ uint16 HidEmu_ProcessEvent(uint8 task_id, uint16 events) {
 
             if (lwrb_get_full(&KEY_buff)) {
                 tmos_start_task(hidEmuTaskId, BLE_SEND_DATA_EVT,
-                        MS1_TO_SYSTEM_TIME(10));  //FIXME£º¸ù¾Ý·µ»ØÖµÅÐ¶ÏÊÇ·ñÔÙ´Î·¢ËÍ
+                        MS1_TO_SYSTEM_TIME(10));  //FIXMEï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½Öµï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ù´Î·ï¿½ï¿½ï¿½
             }
         }
         return (events ^ BLE_SEND_DATA_EVT);

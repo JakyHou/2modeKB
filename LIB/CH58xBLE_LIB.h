@@ -210,7 +210,7 @@ extern const uint8_t VER_LIB[];  // LIB version
 #define ABS(n)     (((n) < 0) ? -(n) : (n))
 #endif
 
-/* TxPower define(Accuracy:¡À1dBm) */
+/* TxPower define(Accuracy:ï¿½ï¿½1dBm) */
 #define LL_TX_POWEER_MINUS_16_DBM       0x01
 #define LL_TX_POWEER_MINUS_11_DBM       0x03
 #define LL_TX_POWEER_MINUS_7_DBM        0x05
@@ -719,7 +719,7 @@ extern const uint8_t VER_LIB[];  // LIB version
 #define bleGAPBondRejected                      0x32  //!< The bond information was rejected.
 #define bleGAPExpiredCanceled                   0x33  //!< The duration has expired
 
-#define GAP_DEVICE_NAME_LEN                     21 // Excluding null-terminate char
+#define GAP_DEVICE_NAME_LEN                     14 // Excluding null-terminate char
 
 // option defined
 #define LISTEN_PERIODIC_ADVERTISING_MODE        (1<<0) //!< used to determine whether the Periodic Advertiser List is used
@@ -790,20 +790,20 @@ extern const uint8_t VER_LIB[];  // LIB version
 #define TGAP_AUTH_TASK_ID                       24  //!< Task ID override for Task Authentication control (for stack internal use only)
 
 // v5.x
-#define TGAP_ADV_TX_POWER                       25  //!< Indicates the maximum power level Range: -127 ¡Ü N ¡Ü +126 Units: dBm.Default 127(Host has no preference).
+#define TGAP_ADV_TX_POWER                       25  //!< Indicates the maximum power level Range: -127 ï¿½ï¿½ N ï¿½ï¿½ +126 Units: dBm.Default 127(Host has no preference).
 #define TGAP_ADV_PRIMARY_PHY                    26  //!< Indicates the PHY on which the advertising packets are transmitted on the primary advertising channel.LE 1M/LE Coded.Default GAP_PHY_VAL_LE_1M.
 #define TGAP_ADV_SECONDARY_PHY                  27  //!< LE 1M/LE 2M/LE Coded. Default GAP_PHY_VAL_LE_1M.
 #define TGAP_ADV_SECONDARY_MAX_SKIP             28  //!< Maximum advertising events the Controller can skip before sending the AUX_ADV_IND packets on the secondary advertising channel. Default 0.
 #define TGAP_ADV_ADVERTISING_SID                29  //!< Value of the Advertising SID subfield in the ADI field of the PDU Range:0-15. Default 0.
 #define TGAP_ADV_SCAN_REQ_NOTIFY                30  //!< Scan request notifications enabled.Default 0-disabled.
-#define TGAP_ADV_ADVERTISING_DURATION           31  //!< Advertising duration Range: 0x0001 ¨C 0xFFFF Time = N * 10ms. Default 0-No advertising duration.
-#define TGAP_ADV_MAX_EVENTS                     32  //!< indicates the maximum number of extended advertising events.Range: 0x00 ¨C 0xFF. Default 0(No maximum number of advertising events).
+#define TGAP_ADV_ADVERTISING_DURATION           31  //!< Advertising duration Range: 0x0001 ï¿½C 0xFFFF Time = N * 10ms. Default 0-No advertising duration.
+#define TGAP_ADV_MAX_EVENTS                     32  //!< indicates the maximum number of extended advertising events.Range: 0x00 ï¿½C 0xFF. Default 0(No maximum number of advertising events).
 
 // when in General Discovery process
 #define TGAP_DISC_SCAN_PHY                      33  //!< LE 1M/LE Coded. Default GAP_PHY_BIT_LE_1M.
 #define TGAP_DISC_SCAN_CODED_INT                34  //!< Scan interval used during Link Layer coded Scanning state, when in General Discovery process (n * 0.625 mSec)
 #define TGAP_DISC_SCAN_CODED_WIND               35  //!< Scan window used during Link Layer coded Scanning state, when in General Discovery process (n * 0.625 mSec)
-#define TGAP_DISC_SCAN_DURATION                 36  //!< Scan duration Range: 0x0001 ¨C 0xFFFF Time = N * 10 ms. Default 0-Scan continuously until explicitly disable.
+#define TGAP_DISC_SCAN_DURATION                 36  //!< Scan duration Range: 0x0001 ï¿½C 0xFFFF Time = N * 10 ms. Default 0-Scan continuously until explicitly disable.
 #define TGAP_DISC_SCAN_PERIOD                   37  //!< Time interval from when the Controller started its last Scan_Duration until it begins the subsequent Scan_Duration.
                                                     //!< Default 0 Periodic scanning disabled.
 
@@ -2687,7 +2687,7 @@ extern bStatus_t BLE_LibInit( bleConfig_t* pCfg );
  * @return  access address
  * the Access Address meets the following requirements:
  * It shall have no more than six consecutive zeros or ones. 
- * It shall not be t he advertising channel packets¡¯ Access Address.
+ * It shall not be t he advertising channel packetsï¿½ï¿½ Access Address.
  * It shall not be a sequence that differ s from the advertising channel packets' Access Address by only one bit.
  * It shall not have all four octets equal.
  * It shall have no more  than 24 transitions.
