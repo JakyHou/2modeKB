@@ -32,7 +32,7 @@ const uint8_t LED_Table[] =                    //ÊÊÅäÓÚØ¤17+4µÄ¼üÂë±í
 
 const uint8_t keytale_8b[] =                    
 {
-//        R0   R1   R2   R3   R4   R5
+//             R0   R1     R2   R3   R4 
 //              Q   E     R     U     O
         0x00, 0x14, 0x08, 0x15, 0x18, 0x12,  //c0                
 //             W    S     G     H       L
@@ -314,7 +314,7 @@ void index2keyVal_8(uint8_t *index, uint8_t *keyVal, uint8_t len)
 
         if(keytale_8b[index[b]]==0xfe){//BOOT±»ŞôÏÂ
                     flag_fn = true;
-//                    while(!GPIOB_ReadPortPin(GPIO_Pin_22));
+                //    while(!GPIOB_ReadPortPin(GPIO_Pin_22));
                 }
     }
 }
@@ -341,12 +341,12 @@ bool hotkeydeal(uint8_t *index, uint8_t *keys, uint8_t nums)//index¶ÔÓ¦¼üÖµµÄÖ¸Õ
 {
     bool ret = false;
     for (int i = 0; i < nums; i++) {
-//        if (index[i] == 5)             //shift-l
-//                {
-//            keys[0] |= keytale_8b[index[i]];
-//            index[i] = 0;
-//            ret = true;
-//        }
+       if (index[i] == 0X26)             //shift-l
+               {
+           keys[0] |= keytale_8b[index[i]];
+           index[i] = 0;
+           ret = true;
+       }
 //        if (index[i] == 82)             //shift-r
 //                {
 //            keys[0] |= keytale_8b[index[i]];
@@ -390,11 +390,11 @@ bool hotkeydeal(uint8_t *index, uint8_t *keys, uint8_t nums)//index¶ÔÓ¦¼üÖµµÄÖ¸Õ
 //            ret = true;
 //        }
 
-        if (index[i] == 31)             //Fn
-                {
-            keys[0] = keytale_8b[index[i]];
-            index[i] = 0;
-        }
+        // if (index[i] == 0X25)             //Fn
+        //         {
+        //     keys[0] = keytale_8b[index[i]];
+        //     index[i] = 0;
+        // }
     }
 
     return ret;
@@ -494,7 +494,7 @@ bool SpecialKey(uint8_t *keyval)             //Fn¼ü
             flag_fn=0;
             break;
 
-        case 0x55:      //FN+*   ÇĞ»»À¶ÑÀÄ£Ê½
+        case 0X05:      //FN+*   ÇĞ»»À¶ÑÀÄ£Ê½
             PRINT("FN+Print-screen\n");
             if (device_mode == MODE_BLE) {
                 break;
@@ -521,7 +521,7 @@ bool SpecialKey(uint8_t *keyval)             //Fn¼ü
 
             break;
 
-        case 0x54:      //FN+/    ÇĞ»»ÓĞÏßÄ£Ê½
+        case 0X04:      //FN+/    ÇĞ»»ÓĞÏßÄ£Ê½
             PRINT("FN+Pause\n");
 
             if (device_mode == MODE_USB) {
@@ -1193,7 +1193,18 @@ bool readKeyVal(void) {
 
 #if KEY_MODE==8
     //hotkey deal
-//    hotkeydeal(current_key_index, save_key8, key_num);//Õâ¸öº¯Êı¹ıºó£¬save_key[0]´æÓĞÌØÊâ¼üµÄ°´ÏÂÇé¿ö£¬shift  ctrl  fn
+    //  PRINT("key=[");
+    // for(int i = 0; i < 8; i++){
+    //     if(i) PRINT(" ");
+    //     PRINT("%#x", current_key_index[i]);
+    // }PRINT("]\n");
+    // PRINT("key=[");
+    // for(int i = 0; i < 8; i++){
+    //     if(i) PRINT(" ");
+    //     PRINT("%#x", save_key8[i]);
+    // }PRINT("]\n");
+    // PRINT("KEY NUM=%d\n",key_num);
+    hotkeydeal(current_key_index, save_key8, key_num);//Õâ¸öº¯Êı¹ıºó£¬save_key[0]´æÓĞÌØÊâ¼üµÄ°´ÏÂÇé¿ö£¬shift  ctrl  fn
                                                       //save_keyÓ¦¸Ã¾ÍÊÇÖ®ºóÒªÉÏ±¨µÄHIDÊı¾İ°ü
 
     index2keyVal_8(current_key_index, save_key8, key_num);//Õâ¸öº¯Êıºó£¬ÈÃsave_key[2~7]Ìî³äÆÕÍ¨°´¼ü£¬ÓÉÕıÔÚ°´ÏÂµÄ°´¼ü¾ö¶¨

@@ -75,7 +75,7 @@ int main(void)
 //    GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeOut_PP_5mA);
 //    if(GPIOA_ReadPortPin(GPIO_Pin_15)){
 //        GPIOA_ResetBits(GPIO_Pin_14);
-        isUSBinsert = false;
+        isUSBinsert = true;
 //        PRINT("USB insert\n");
 //    } else{
 //        GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeIN_Floating);
