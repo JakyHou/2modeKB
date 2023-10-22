@@ -30,36 +30,27 @@ const uint8_t LED_Table[] =                    //ÊÊÅäÓÚØ¤17+4µÄ¼üÂë±í
         0,  0,  0,  0,  0,  0, 0, //c4                 //null            NULL      NULL        NULL        NULL       NULL
 };
 
-const uint8_t keytale_8b[] =                    //ÊÊÅäÓÚØ¤17+4µÄ¼üÂë±í
+const uint8_t keytale_8b[] =                    
 {
 //        R0   R1   R2   R3   R4   R5
-        0x00, 0x29, 0x53, 0x5f, 0x5c, 0x59, //0x62, //c0                 //esc             Num        7           4          1           0
-        0x00, 0x2b, 0x54, 0x60, 0x5d, 0x5a, //0x00, //c1                 //tab              /         8           5          2          0x00
-        0x00, 0x46, 0x55, 0x61, 0x5e, 0x5b, //0x63, //c2                 //Print-screen     *         9           6          3           .            alt-l
-        0x00, 0x2a, 0x56, 0x57, 0x00, 0x00, //0x58, //c3                 //Backspace        -         +          0x00        Fn        Enter              Space
-        0x00, 0xfe, 0x00, 0x00, 0x00, 0x00, //0x00, //c4                 //F4            4$              R           F          V            alt-r
+//              Q   E     R     U     O
+        0x00, 0x14, 0x08, 0x15, 0x18, 0x12,  //c0                
+//             W    S     G     H       L
+        0x00, 0x1A, 0x16, 0x0A, 0x0B, 0x0F, //c1               
+//            SYM   D      T     Y     I
+        0x00, 0x36, 0x07, 0x17, 0x1C, 0x0C,  //c2               
+//             A     P     Rs   ENTER BACKS
+        0x00, 0x04, 0x13, 0x39, 0x28, 0x2a,  //c3                
+//             ALT   X     V     B     $
+        0x00, 0x04, 0x1B, 0x19, 0x05, 0x2b,  //c4                
+//            SPAC  Z      C      N     M
+        0x00, 0x2c, 0x1D, 0x06, 0x11, 0x10,  //c5                 
+//             MIC   Ls    F     J      K
+        0x00, 0xfe, 0x02, 0x09, 0x0D, 0x0E, //c6        
+  
         //Ö»ÓÃµ½ÁËÒÔÉÏ
         //×¢Òâ  R1-C0Îª×óÉÏ½ÇR2-C0ÎªµÚ¶þÐÐµÚÒ»ÁÐ£¬ÒÔ´ËÀàÍÆ   FNÎªkey[26]
 
-
-        0x00, 0x3e, 0x22, 0x17, 0x0a, 0x05, //0xfe, //c5                 //F5            5%              T           G          B            Fn
-
-        0x00, 0x3f, 0x23, 0x1c, 0x0b, 0x11, //0x10, //c6                 //F6            6^              Y           H          N
-        0x00, 0x40, 0x24, 0x18, 0x0d, 0x10, //0x80, //c7                 //F7            7&              U           J          M            win-r
-        0x00, 0x41, 0x25, 0x0c, 0x0e, 0x36, //0x10, //c8                 //F8            8*              I           K          <,           ctr-r
-        0x00, 0x42, 0x26, 0x12, 0x0f, 0x37, //0x00, //c9                 //F9            9               O           L          >.
-        0x00, 0x43, 0x27, 0x13, 0x33, 0x38, //0x00, //c10                //F10           0               P           ;:         /?
-        0x00, 0x44, 0x2d, 0x2f, 0x34, 0x20, //0x00, //c11                //F11           -_              [{          '"         shift-r
-        0x00, 0x45, 0x2e, 0x30, 0x31, 0x00, //0x00, //c12                //F12           =+              ]}          \|
-
-        0x00, 0x00, 0x2a, 0x00, 0x28, 0x00, 0x00, //c13                //0x00          Backspace                   Enter-R
-        0x00, 0x46, 0x49, 0x4c, 0x00, 0x00, 0x50, //c14                //Print-screen  Insert          Delete      0x00,       0x00,       ×ó
-        0x00, 0x47, 0x4a, 0x4d, 0x00, 0x52, 0x51, //c15                //Scroll-Lock   Home            End         0x00,       ÉÏ                           ÏÂ
-        0x00, 0x48, 0x4b, 0x4e, 0x00, 0x00, 0x4f, //c16                //Pause         Page-Up         Page-Down   0x00        0x00        ÓÒ
-        0x00, 0x00, 0x53, 0x5f, 0x5c, 0x59, 0x00, //c17                //Backlight     Num-lock        7HOME       4(Ð¡¼üÅÌ)   1End       0x00
-        0x00, 0x00, 0x54, 0x60, 0x5d, 0x5a, 0x62, //c18                //Locking       /               8(Ð¡¼üÅÌ)   5(Ð¡¼üÅÌ)   2(Ð¡¼üÅÌ)   0Ins
-        0x00, 0x00, 0x55, 0x61, 0x5e, 0x5b, 0x63, //c19                //0x00          *               9Pgup       6(Ð¡¼üÅÌ)   3PgDn       =del
-        0x00, 0x00, 0x56, 0x57, 0x00, 0x00, 0x58 //c20                 //0x00          -               +           0x00        0x00        Enter-R2
 };
 
 #elif
@@ -213,7 +204,7 @@ void keyScan(uint8_t *pbuf, uint8_t *key_num)//fristbuf ÎªÕâ´ÎÉ¨ÃèµÄ°´¼üÇé¿ö   Ê
             if (Key_S0 == 0) {
                 Sataion = i * 6 + 1;  //firstbuf[KeyNum++]À¨ºÅÄÚKeyNumÏÈµ÷ÓÃºó++,ÇÒÊÇ¸Ã¼üÞôÏÂ²Å»á++
                 firstbuf[KeyNum++] = Sataion;
-
+                // PRINT("Key_S0.\n");
             }
             if (Key_S1 == 0) {
                 Sataion = i * 6 + 2;

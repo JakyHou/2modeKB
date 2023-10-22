@@ -117,8 +117,8 @@ void HAL_SleepInit( void )
   R8_RTC_MODE_CTRL |= RB_RTC_TRIG_EN;    // ´¥·¢Ä£Ê½
   R8_SAFE_ACCESS_SIG = 0;    //
 
-  GPIOA_ITModeCfg( GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5, GPIO_ITMode_FallEdge );        // ÏÂ½µÑØ»½ÐÑ
-  PFIC_EnableIRQ( GPIO_A_IRQn );
+  // GPIOB_ITModeCfg( GPIO_Pin_0|GPIO_Pin_2|GPIO_Pin_18|GPIO_Pin_6|GPIO_Pin_8, GPIO_ITMode_FallEdge );        // ÏÂ½µÑØ»½ÐÑ
+  // PFIC_EnableIRQ( GPIO_B_IRQn );
   PFIC_EnableIRQ( RTC_IRQn );
 
   if(device_mode == MODE_USB){
