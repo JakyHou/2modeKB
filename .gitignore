@@ -1,3 +1,7 @@
 /APP/obj
 /APP/.settings
 .vscode
+*.cproject
+*.project
+*.template
+*.wvproj
