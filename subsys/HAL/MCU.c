@@ -281,6 +281,7 @@ tmosEvents HAL_ProcessEvent( tmosTaskID task_id, tmosEvents events )
 #if (defined HAL_KEY) && (HAL_KEY == TRUE)
 //     LOG_INFO("KEY start: %d", millis());
 
+    // if(0){
     if(readKeyVal()){
         LOG_INFO("key!");
         is_idle = false;

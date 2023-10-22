@@ -83,7 +83,7 @@
 #define HAL_KEY											TRUE
 #endif
 #ifndef HAL_LED
-#define HAL_LED											TRUE
+#define HAL_LED											FALSE
 #endif
 #ifndef TEM_SAMPLE
 #define TEM_SAMPLE									    TRUE
@@ -141,7 +141,10 @@
 //#if (defined HAL_SLEEP) && (HAL_SLEEP == TRUE) && (defined DEBUG)
 //#error "When the sleep function is turned on, the print function needs to be turned off!"
 //#endif
-
+#ifndef DEBUG
+#define DEBUG 1
+#define LOG
+#endif
 extern u32 MEM_BUF[BLE_MEMHEAP_SIZE / 4];
 extern uint8_t MacAddr[6];
 

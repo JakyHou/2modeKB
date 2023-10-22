@@ -5,13 +5,12 @@
 #include <stdint.h>
 
 
-#define Key_S0                      (R32_PB_PIN&GPIO_Pin_12)
+#define Key_S0                      (R32_PB_PIN&GPIO_Pin_0)
 #define Key_S1                      (R32_PB_PIN&GPIO_Pin_2)
-#define Key_S2                      (R32_PB_PIN&GPIO_Pin_0)
-#define Key_S3                      (R32_PB_PIN&GPIO_Pin_1)
-#define Key_S4                      (R32_PB_PIN&GPIO_Pin_13)
-#define Key_S5                      (R32_PB_PIN&GPIO_Pin_3)
-#define Key_fn                      (R32_PB_PIN&GPIO_Pin_22)
+#define Key_S2                      (R32_PB_PIN&GPIO_Pin_18)
+#define Key_S3                      (R32_PB_PIN&GPIO_Pin_6)
+#define Key_S4                      (R32_PB_PIN&GPIO_Pin_8)
+// #define Key_S5                      (R32_PB_PIN&GPIO_Pin_3)
 
 #define LONGKEY_TIME                600
 #define SHORTKEY_TIME               100

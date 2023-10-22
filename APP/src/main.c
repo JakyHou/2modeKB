@@ -54,7 +54,7 @@ int main(void)
     SysTick_Config(FREQ_SYS/1000);  //1ms
     PowerMonitor(DISABLE, HALevel_2V5);   //不开启电压检测
 #if (defined (DCDC_ENABLE)) && (DCDC_ENABLE == TRUE)
-    PWR_DCDCCfg(DISABLE);//不开启DCDC
+    PWR_DCDCCfg(ENABLE);//不开启DCDC
 #endif
 
 #if (defined (HAL_SLEEP)) && (HAL_SLEEP == TRUE)
@@ -75,7 +75,7 @@ int main(void)
 //    GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeOut_PP_5mA);
 //    if(GPIOA_ReadPortPin(GPIO_Pin_15)){
 //        GPIOA_ResetBits(GPIO_Pin_14);
-        isUSBinsert = true;
+        isUSBinsert = false;
 //        PRINT("USB insert\n");
 //    } else{
 //        GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeIN_Floating);

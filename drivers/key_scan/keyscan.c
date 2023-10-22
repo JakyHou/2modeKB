@@ -9,6 +9,8 @@
 
 #include "backlight/backlight.h"
 #define my_keyboard 1  //Œ™1 ±≥Ã–Ú±‰Œ™  ≈‰”⁄ÿ§17    0Œ™  ≈‰«ﬂ∫„87µƒ‘≠∫Ø ˝
+#define ROW 5
+#define COL 7
 #ifdef my_keyboard
 static uint8_t LED_Table_Value[20][3]={0};
 const uint8_t LED_Table_Value_Temp[20][3]=
@@ -31,24 +33,24 @@ const uint8_t LED_Table[] =                    //  ≈‰”⁄ÿ§17+4µƒº¸¬Î±Ì
 const uint8_t keytale_8b[] =                    //  ≈‰”⁄ÿ§17+4µƒº¸¬Î±Ì
 {
 //        R0   R1   R2   R3   R4   R5
-        0x00, 0x29, 0x53, 0x5f, 0x5c, 0x59, 0x62, //c0                 //esc             Num        7           4          1           0
-        0x00, 0x2b, 0x54, 0x60, 0x5d, 0x5a, 0x00, //c1                 //tab              /         8           5          2          0x00
-        0x00, 0x46, 0x55, 0x61, 0x5e, 0x5b, 0x63, //c2                 //Print-screen     *         9           6          3           .            alt-l
-        0x00, 0x2a, 0x56, 0x57, 0x00, 0x00, 0x58, //c3                 //Backspace        -         +          0x00        Fn        Enter              Space
-        0x00, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x00, //c4                 //F4            4$              R           F          V            alt-r
+        0x00, 0x29, 0x53, 0x5f, 0x5c, 0x59, //0x62, //c0                 //esc             Num        7           4          1           0
+        0x00, 0x2b, 0x54, 0x60, 0x5d, 0x5a, //0x00, //c1                 //tab              /         8           5          2          0x00
+        0x00, 0x46, 0x55, 0x61, 0x5e, 0x5b, //0x63, //c2                 //Print-screen     *         9           6          3           .            alt-l
+        0x00, 0x2a, 0x56, 0x57, 0x00, 0x00, //0x58, //c3                 //Backspace        -         +          0x00        Fn        Enter              Space
+        0x00, 0xfe, 0x00, 0x00, 0x00, 0x00, //0x00, //c4                 //F4            4$              R           F          V            alt-r
         //÷ª”√µΩ¡À“‘…œ
         //◊¢“‚  R1-C0Œ™◊Û…œΩ«R2-C0Œ™µ⁄∂˛––µ⁄“ª¡–£¨“‘¥À¿‡Õ∆   FNŒ™key[26]
 
 
-        0x00, 0x3e, 0x22, 0x17, 0x0a, 0x05, 0xfe, //c5                 //F5            5%              T           G          B            Fn
+        0x00, 0x3e, 0x22, 0x17, 0x0a, 0x05, //0xfe, //c5                 //F5            5%              T           G          B            Fn
 
-        0x00, 0x3f, 0x23, 0x1c, 0x0b, 0x11, 0x10, //c6                 //F6            6^              Y           H          N
-        0x00, 0x40, 0x24, 0x18, 0x0d, 0x10, 0x80, //c7                 //F7            7&              U           J          M            win-r
-        0x00, 0x41, 0x25, 0x0c, 0x0e, 0x36, 0x10, //c8                 //F8            8*              I           K          <,           ctr-r
-        0x00, 0x42, 0x26, 0x12, 0x0f, 0x37, 0x00, //c9                 //F9            9               O           L          >.
-        0x00, 0x43, 0x27, 0x13, 0x33, 0x38, 0x00, //c10                //F10           0               P           ;:         /?
-        0x00, 0x44, 0x2d, 0x2f, 0x34, 0x20, 0x00, //c11                //F11           -_              [{          '"         shift-r
-        0x00, 0x45, 0x2e, 0x30, 0x31, 0x00, 0x00, //c12                //F12           =+              ]}          \|
+        0x00, 0x3f, 0x23, 0x1c, 0x0b, 0x11, //0x10, //c6                 //F6            6^              Y           H          N
+        0x00, 0x40, 0x24, 0x18, 0x0d, 0x10, //0x80, //c7                 //F7            7&              U           J          M            win-r
+        0x00, 0x41, 0x25, 0x0c, 0x0e, 0x36, //0x10, //c8                 //F8            8*              I           K          <,           ctr-r
+        0x00, 0x42, 0x26, 0x12, 0x0f, 0x37, //0x00, //c9                 //F9            9               O           L          >.
+        0x00, 0x43, 0x27, 0x13, 0x33, 0x38, //0x00, //c10                //F10           0               P           ;:         /?
+        0x00, 0x44, 0x2d, 0x2f, 0x34, 0x20, //0x00, //c11                //F11           -_              [{          '"         shift-r
+        0x00, 0x45, 0x2e, 0x30, 0x31, 0x00, //0x00, //c12                //F12           =+              ]}          \|
 
         0x00, 0x00, 0x2a, 0x00, 0x28, 0x00, 0x00, //c13                //0x00          Backspace                   Enter-R
         0x00, 0x46, 0x49, 0x4c, 0x00, 0x00, 0x50, //c14                //Print-screen  Insert          Delete      0x00,       0x00,       ◊Û
@@ -100,16 +102,16 @@ void index2keyVal_16(uint8_t *index, uint8_t *keyVal, uint8_t len);
 void keyInit(void) //  ≈‰ÿ§17   ”√¡ÀÀƒ¡–¡˘––  1-4¡–∂‘”¶PB4-PB7  1-6¡–∂‘”¶PA0-PA5  ∂˛º´π‹––÷∏œÚ¡–   ¿≠µÕ¡–“¿¥Œ∂¡––
 {
     GPIOB_ModeCfg(
-        GPIO_Pin_5| GPIO_Pin_4 | GPIO_Pin_14 | GPIO_Pin_15 ,  //’‚∏ˆÀ≥–Ú «¥”…œµΩœ¬
-        GPIO_ModeOut_PP_5mA );//––
+        GPIO_Pin_0| GPIO_Pin_2 | GPIO_Pin_18 | GPIO_Pin_6 | GPIO_Pin_8,  //’‚∏ˆÀ≥–Ú «¥”…œµΩœ¬
+        GPIO_ModeIN_PU );//––
     GPIOB_ModeCfg(
-        GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_12 | GPIO_Pin_13,GPIO_ModeIN_PU);//¡–
+        GPIO_Pin_1 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_7 | GPIO_Pin_9 | GPIO_Pin_16 | GPIO_Pin_17,GPIO_ModeOut_PP_5mA);//¡–
 
-    GPIOB_ModeCfg( GPIO_Pin_22, GPIO_ModeIN_PU);//BOOT
-    GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeOut_PP_20mA);//RGB
-    GPIOA_ModeCfg(GPIO_Pin_13|GPIO_Pin_15,GPIO_ModeOut_PP_20mA);//LED÷∏ æµ∆
-        GPIOA_ResetBits(GPIO_Pin_13);
-        GPIOA_ResetBits(GPIO_Pin_15);
+    // GPIOB_ModeCfg( GPIO_Pin_22, GPIO_ModeIN_PU);//BOOT
+    // GPIOA_ModeCfg( GPIO_Pin_14, GPIO_ModeOut_PP_20mA);//RGB
+    // GPIOA_ModeCfg(GPIO_Pin_13|GPIO_Pin_15,GPIO_ModeOut_PP_20mA);//LED÷∏ æµ∆
+        // GPIOA_ResetBits(GPIO_Pin_13);
+        // GPIOA_ResetBits(GPIO_Pin_15);
 
         if(device_mode == MODE_BLE){
                 GPIOA_SetBits(GPIO_Pin_13);
@@ -130,11 +132,11 @@ void keyInit(void) //  ≈‰ÿ§17   ”√¡ÀÀƒ¡–¡˘––  1-4¡–∂‘”¶PB4-PB7  1-6¡–∂‘”¶PA0-PA5
 }
 
 
-const uint32_t IOmap[] = {1<<5, 1<<14, 1<<4, 1<<15};  //’‚∏ˆÀ≥–Ú «¥”◊ÛµΩ”“
+const uint32_t IOmap[] = {1<<1, 1<<3, 1<<5, 1<<7, 1<<9, 1<<16, 1<<17};  //’‚∏ˆÀ≥–Ú «¥”◊ÛµΩ”“
 
 void RstAllPins(void)
 {
-    for(uint8_t i = 0; i < 4; i++){
+    for(uint8_t i = 0; i < COL; i++){
           GPIOB_ResetBits(IOmap[i]);
     }
 }
@@ -204,35 +206,35 @@ void keyScan(uint8_t *pbuf, uint8_t *key_num)//fristbuf Œ™’‚¥Œ…®√Ëµƒ∞¥º¸«Èøˆ    
     }
     KeyNum = 0;
 
-    for( i = 0; i < 4; i++){ //4¥Œ¡–…®√Ë£¨√ø¥Œ5∏ˆ––∞¥º¸£¨¥”◊ÛµΩ”“£¨¥”…œµΩœ¬
+    for( i = 0; i < COL; i++){ //4¥Œ¡–…®√Ë£¨√ø¥Œ5∏ˆ––∞¥º¸£¨¥”◊ÛµΩ”“£¨¥”…œµΩœ¬
         GPIOB_ResetBits(IOmap[i]);//œ¬¿≠¡–£¨∂¡––
         __nop();__nop();  //”…”⁄…œ¿≠ ‰»Î¿≠µÕ–Ë“™“ª∂®µƒ ±º‰£¨À˘“‘±ÿ–Î—” ±“ª∂Œ ±º‰‘Ÿ∂¡IO
         {
             if (Key_S0 == 0) {
-                Sataion = i * 7 + 1;  //firstbuf[KeyNum++]¿®∫≈ƒ⁄KeyNumœ»µ˜”√∫Û++,«“ «∏√º¸ﬁÙœ¬≤≈ª·++
+                Sataion = i * 6 + 1;  //firstbuf[KeyNum++]¿®∫≈ƒ⁄KeyNumœ»µ˜”√∫Û++,«“ «∏√º¸ﬁÙœ¬≤≈ª·++
                 firstbuf[KeyNum++] = Sataion;
 
             }
             if (Key_S1 == 0) {
-                Sataion = i * 7 + 2;
+                Sataion = i * 6 + 2;
                 firstbuf[KeyNum++] = Sataion;
             }
             if (Key_S2 == 0) {
-                Sataion = i * 7 + 3;
+                Sataion = i * 6 + 3;
                 firstbuf[KeyNum++] = Sataion;
             }
             if (Key_S3 == 0) {
-                Sataion = i * 7 + 4;
+                Sataion = i * 6 + 4;
                 firstbuf[KeyNum++] = Sataion;
             }
             if (Key_S4 == 0) {
-                Sataion = i * 7 + 5;
+                Sataion = i * 6 + 5;
                 firstbuf[KeyNum++] = Sataion;
             }
-            if (Key_S5 == 0) {
-                Sataion = i * 7 + 6;
-               firstbuf[KeyNum++] = i * 7 + 6;
-            }
+            // if (Key_S5 == 0) {
+            //     Sataion = i * 7 + 6;
+            //    firstbuf[KeyNum++] = i * 7 + 6;
+            // }
         }
         GPIOB_SetBits(IOmap[i]);//”Î«∞√Ê¿≠µÕIOœ‡∂‘£¨¿≠∏ﬂIO
 
@@ -242,12 +244,6 @@ void keyScan(uint8_t *pbuf, uint8_t *key_num)//fristbuf Œ™’‚¥Œ…®√Ëµƒ∞¥º¸«Èøˆ    
     }
     //ÕÍ»´…®√ËÕÍ£¨…˙≥…“ª∏ˆfirstbuf[120] ˝◊È£¨«∞102∏ˆ‘™Àÿº¸”µ”–º¸÷µ£®firstbuf[0]~firstbuf[101]£©
     //»Ù∂‘”¶º¸ﬁÙœ¬‘Ú‘™Àÿ÷µŒ™firstbuf[0]=1À≥–ÚΩ”œ¬»•µ´ «Ã¯π˝∆ﬂµƒ±∂ ˝£¨√ª”–ﬁÙœ¬‘Ú∏√º¸÷µŒ™0
-
-
-    if(!GPIOB_ReadPortPin(GPIO_Pin_22))//Ω´PB22(boot)∏¥”√Œ™fn  µ•∂¿…®√Ë
-    {
-        firstbuf[KeyNum++] = i*7+1;
-    }
 
     //’‚“ª¥Œ”Î…œ“ª¥Œº¸÷µœ‡µ» »•∂∂∂Ø◊˜”√
     if (tmos_memcmp(firstbuf, secbuf, sizeof(firstbuf)) == true)
